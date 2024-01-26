@@ -1,12 +1,8 @@
 <template>
-    <section class="app" id="app">
-      <!-- <router-view></router-view> -->
-    </section>
+  <section class="app" id="app">
+    <p class="text-red-200">lala</p>
+    <!-- <router-view></router-view> -->
+  </section>
 </template>
 
-<script lang="ts" setup >
-
-
-
-
-</script>
+<script lang="ts" setup></script>
