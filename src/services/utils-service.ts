@@ -13,12 +13,12 @@ export function getLocalIconPath(
   ).href;
 }
 
-export function getLocalImgPath(folder: string, icon?: string, type?: string) {
-  if (!icon) {
+export function getLocalImgPath(folder: string, img?: string, type?: string) {
+  if (!img) {
     return undefined;
   }
   return new URL(
-    `../assets/imgs/${folder}/${icon}.${type || "svg"}`,
+    `../assets/imgs/${folder}/${img}.${type || "svg"}`,
     import.meta.url
   ).href;
 }
