@@ -1,6 +1,6 @@
 <template>
     <section :class="cardClass">
-        <img class="w-full object-cover mb-3 rounded preview-img" :src="cardImgSrc">
+        <img :class="cardImgClass" :src="cardImgSrc">
         <p v-if="title" class="bold" >{{ title }}</p>
         <p v-if="description"> {{ description }}</p>
     </section>
@@ -10,6 +10,8 @@
 import { computed } from 'vue';
 import { getLocalImgPath } from '../../services/utils-service';
 
+// COMPUTED
+
 const cardImgSrc = computed(() => {
     return (props.imgs && props.imgs[0]) || props.placeholderImg || getLocalImgPath('placeholders', 'pet-placeholder', 'png')
 })
@@ -18,6 +20,11 @@ const cardClass = computed(() => {
 return "flex flex-col items-center rounded p-3 bg-light text-dark border border-midLight cursor-pointer card"
 })
 
+const cardImgClass = computed(()=>{
+ return  "w-full object-cover mb-3 rounded preview-img"
+})
+
+// PROPS
 
 interface CardProps {
     imgs?:string[]
