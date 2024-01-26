@@ -1,5 +1,5 @@
 <template>
-  <section dir="ltr" class="app-header px-6 py-3 bg-light">
+  <section dir="ltr" class="app-header px-6 py-3 bg-light border-b border-midLight">
     <div
       @click="router.push('/')"
       class="flex items-center cursor-pointer w-fit"
