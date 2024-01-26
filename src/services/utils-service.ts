@@ -22,3 +22,9 @@ export function getLocalImgPath(folder: string, img?: string, type?: string) {
     import.meta.url
   ).href;
 }
+
+export function hasVerticalScroll() {
+  const html = document.querySelector('html')
+  if (html)
+    return html.scrollHeight > html.clientHeight
+}

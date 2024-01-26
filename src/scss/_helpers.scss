@@ -7,3 +7,11 @@
   margin: 0;
   padding: 0;
 }
+
+.black-screen {
+  position: fixed;
+  width: 100%;
+  height: 100dvh;
+  inset: 0;
+  background-color: rgba(41, 47, 76, 0.7);
+}
