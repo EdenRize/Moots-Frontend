@@ -4,7 +4,7 @@ import PetIndexPage from "./src/views/PetIndexPage.vue";
 
 const routes: Array<RouteRecordRaw> = [
   { path: "/", component: LandingPage },
-  { path: "/:petType", component: PetIndexPage },
+  { path: "/pet/:petType", component: PetIndexPage },
 ];
 
 const router = createRouter({

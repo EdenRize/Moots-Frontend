@@ -1,11 +1,9 @@
 export function getLocalIconPath(
   folder: string,
-  icon: string | undefined,
+  icon: string,
   type?: string
-) {
-  if (!icon) {
-    return undefined;
-  }
+): string {
+
 
   return new URL(
     `../assets/icons/${folder}/${icon}.${type || "svg"}`,
@@ -13,10 +11,7 @@ export function getLocalIconPath(
   ).href;
 }
 
-export function getLocalImgPath(folder: string, img?: string, type?: string) {
-  if (!img) {
-    return undefined;
-  }
+export function getLocalImgPath(folder: string, img: string, type?: string): string {
   return new URL(
     `../assets/imgs/${folder}/${img}.${type || "svg"}`,
     import.meta.url
@@ -28,3 +23,5 @@ export function hasVerticalScroll() {
   if (html)
     return html.scrollHeight > html.clientHeight
 }
+
+
