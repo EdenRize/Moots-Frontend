@@ -8,12 +8,16 @@
         </div>
 
         <div :class="itemDescriptionClass">
-            <p v-if="description">{{ description }}</p>
+            <p v-if="description" class="text-xl">{{ description }}</p>
+            <div class="publish-info">
+                <p>פורסם על ידי
+                    <span v-if="owner"> {{ owner.username }}</span>
+                    בתאריך
+                    <span v-if="createdAt"> {{ timestampToFormattedDate(createdAt) }}</span>
+                </p>
+            </div>
         </div>
 
-        <div v-if="owner" class="owner-details">
-            <p>{{ owner.username }}</p>
-        </div>
 
         <RoundBtn @click="emit('close')" :icon="getLocalIconPath('general', 'close')" />
     </section>
@@ -25,6 +29,7 @@ import RoundBtn from '../RoundBtn.vue';
 import { getLocalIconPath } from '../../../services/utils-service';
 import { User } from '../../../models/user-models';
 import Spinner from '../Spinner.vue';
+import { timestampToFormattedDate } from '../../../services/utils-service';
 
 
 const itemImgSrc = computed(() => {
@@ -35,7 +40,7 @@ const itemImgSrc = computed(() => {
 });
 
 const itemClass = computed(() => {
-    return "relative flex flex-col text-dark item-slot";
+    return "relative h-full flex flex-col text-dark item-slot";
 });
 
 const itemImgClass = computed(() => {
@@ -55,11 +60,12 @@ const itemSubInfoClass = computed(() => {
 });
 
 const itemDescriptionClass = computed(() => {
-    return "flex px-6 py-3 text-xl text-lowLight";
+    return "flex flex-col justify-between h-full px-6 py-3 text-lowLight";
 });
 
 interface ItemSlotProps {
     owner?: User
+    createdAt?: number
     placeholderImg?: string
     title?: string
     subInfo?: string

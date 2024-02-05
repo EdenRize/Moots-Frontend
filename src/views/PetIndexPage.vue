@@ -11,7 +11,7 @@
         <ItemSlot @close="isDialog = false" :sub-info="selectedPet?.pet.age"
           :title="`${selectedPet?.pet.name}${selectedPet?.pet.race ? ` - ${selectedPet?.pet.race}` : ''}`"
           :imgs="selectedPet?.pet.imgs" :description="selectedPet?.pet.description" :placeholder-img="placeholderImg"
-          :owner="selectedPet?.owner" :is-loading="!selectedPet" />
+          :owner="selectedPet?.owner" :is-loading="!selectedPet" :createdAt="selectedPet?.pet.createdAt" />
       </template>
     </Dialog>
   </section>
@@ -38,7 +38,7 @@ const pets: Ref<Pet[]> = ref([
     name: "טים", _id: "1", age: '4 חודשים', type: 'dog',
     race: 'בריטי', description: 'חתול שמן מטומטם לא נחמד בככל עזבו אותו',
     imgs: ['https://res.cloudinary.com/dkvliixzt/image/upload/v1699705610/cld-sample.jpg'],
-    ownerId: '2'
+    ownerId: '2', createdAt: Date.now()
   },
 
 ]);
