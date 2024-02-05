@@ -34,13 +34,15 @@ const emit = defineEmits<{
 
 <style lang="scss" scoped>
 .dialog {
-    opacity: 0;
-    animation: fadeIn .2s ease-in-out forwards;
+
+    @media (min-width: 640px) {
+        opacity: 0;
+        animation: fadeIn .2s ease-in-out forwards;
+    }
+
 
     .content {
-
         @media (min-width: 640px) {
-
             translate: -50% -50%;
         }
     }

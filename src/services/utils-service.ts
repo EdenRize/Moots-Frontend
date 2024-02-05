@@ -34,3 +34,25 @@ export function timestampToFormattedDate(timestamp: number): string {
 
   return `${day}/${month}/${year}`
 }
+
+export function getFormattedTimePassed(timestamp: number): string {
+  const currentDate = new Date();
+  const inputDate = new Date(timestamp);
+
+  const timeDifference = currentDate.getTime() - inputDate.getTime();
+  const seconds = Math.floor(timeDifference / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+
+  if (days > 0) {
+    if (days > 6) return timestampToFormattedDate(timestamp)
+    return `לפני ${days > 1 ? `${days} ימים` : 'יום'}`;
+  } else if (hours > 0) {
+    return `לפני ${hours > 1 ? `${hours} שעות` : 'שעה'}`;
+  } else if (minutes > 0) {
+    return `לפני ${minutes > 1 ? `${minutes} דקות` : 'דקה'}`;
+  } else {
+    return 'ממש עכשיו';
+  }
+}

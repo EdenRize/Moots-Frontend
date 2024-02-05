@@ -1,16 +1,22 @@
 <template>
   <section :class="cardClass">
-    <img :class="cardImgClass" :src="cardImgSrc" />
+    <img @click="emit('infoClick')" :class="cardImgClass" :src="cardImgSrc" />
 
-    <div :class="cardInfoClass">
+    <CardActions class="mb-3" />
+    <div @click="emit('infoClick')" :class="cardInfoClass">
       <p v-if="title" class="bold">{{ title }}</p>
-      <p v-if="subInfo">{{ subInfo }}</p>
+      <div class="flex items-center justify-between">
+        <p v-if="subInfo">{{ subInfo }}</p>
+        <p v-if="createdAt" class="text-lowLight text-sm">{{ getFormattedTimePassed(createdAt) }}</p>
+      </div>
     </div>
   </section>
 </template>
 
 <script lang="ts" setup>
 import { computed } from "vue";
+import CardActions from "./CardActions.vue";
+import { getFormattedTimePassed } from '../../services/utils-service';
 
 // COMPUTED
 
@@ -22,15 +28,15 @@ const cardImgSrc = computed(() => {
 });
 
 const cardClass = computed(() => {
-  return "flex w-full flex-col items-center justify-between rounded  bg-light text-dark border border-midLight cursor-pointer card";
+  return "flex flex-col justify-between sm:rounded bg-white text-dark card";
 });
 
 const cardImgClass = computed(() => {
-  return "w-full object-cover rounded-t preview-img";
+  return " object-cover sm:rounded-t cursor-pointer preview-img";
 });
 
 const cardInfoClass = computed(() => {
-  return "flex flex-col items-center p-3";
+  return "flex flex-col cursor-pointer px-[16px]";
 });
 
 // PROPS
@@ -40,9 +46,15 @@ interface CardProps {
   placeholderImg: string;
   title?: string;
   subInfo?: string;
+  createdAt?: number;
 }
 
 const props = defineProps<CardProps>();
+
+
+const emit = defineEmits<{
+  (e: 'infoClick'): void
+}>()
 </script>
 
 <style lang="scss" scoped>
