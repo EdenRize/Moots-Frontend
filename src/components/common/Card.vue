@@ -45,7 +45,7 @@ interface CardProps {
   imgs?: string[];
   placeholderImg: string;
   title?: string;
-  subInfo?: string;
+  subInfo?: string | null;
   createdAt?: number;
 }
 

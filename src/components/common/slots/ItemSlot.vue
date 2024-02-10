@@ -68,7 +68,7 @@ interface ItemSlotProps {
     createdAt?: number
     placeholderImg?: string
     title?: string
-    subInfo?: string
+    subInfo?: string | null
     description?: string
     imgs?: string[]
     isLoading?: boolean
