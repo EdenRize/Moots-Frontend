@@ -4,11 +4,20 @@ export interface Pet {
   _id: string
   createdAt: number
   ownerId: string
-  name?: string
+  name: string
+  type: string
   age?: string
   description?: string
   imgs?: string[]
+  race?: string
+}
+
+export interface PetCredentials {
+  name: string
   type: string
+  age?: string
+  description?: string
+  imgs?: string[]
   race?: string
 }
 

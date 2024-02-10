@@ -6,3 +6,9 @@ export interface User {
     pets?: Pet[]
     avatar?: string
 }
+
+export interface UserCredentials {
+    username: string
+    password: string
+    avatar?: string
+}

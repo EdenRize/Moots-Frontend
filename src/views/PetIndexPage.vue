@@ -33,25 +33,25 @@ const pets: Ref<Pet[]> = ref([
   {
     name: "טים", _id: "1", age: '4 חודשים', type: 'dog',
     race: 'בריטי', description: 'חתול שמן מטומטם לא נחמד בככל עזבו אותו',
-    imgs: ['https://res.cloudinary.com/dkvliixzt/image/upload/v1699705610/cld-sample.jpg'],
+    imgs: ['https://res.cloudinary.com/dkvliixzt/image/upload/v1707163072/d620b7ac-5dd7-4981-a32d-b5d673498260_raydjz.jpg'],
     ownerId: '2', createdAt: 1707157682399
   },
   {
     name: "טים", _id: "1", age: '4 חודשים', type: 'dog',
     race: 'בריטי', description: 'חתול שמן מטומטם לא נחמד בככל עזבו אותו',
-    imgs: ['https://res.cloudinary.com/dkvliixzt/image/upload/v1699705610/cld-sample.jpg'],
+    imgs: ['https://res.cloudinary.com/dkvliixzt/image/upload/v1707163072/d620b7ac-5dd7-4981-a32d-b5d673498260_raydjz.jpg'],
     ownerId: '2', createdAt: 1706988151039
   },
   {
     name: "טים", _id: "1", age: '4 חודשים', type: 'dog',
     race: 'בריטי', description: 'חתול שמן מטומטם לא נחמד בככל עזבו אותו',
-    imgs: ['https://res.cloudinary.com/dkvliixzt/image/upload/v1699705610/cld-sample.jpg'],
+    imgs: ['https://res.cloudinary.com/dkvliixzt/image/upload/v1707163072/d620b7ac-5dd7-4981-a32d-b5d673498260_raydjz.jpg'],
     ownerId: '2', createdAt: 1707150247988
   },
   {
     name: "טים", _id: "1", age: '4 חודשים', type: 'dog',
     race: 'בריטי', description: 'חתול שמן מטומטם לא נחמד בככל עזבו אותו',
-    imgs: ['https://res.cloudinary.com/dkvliixzt/image/upload/v1699705610/cld-sample.jpg'],
+    imgs: ['https://res.cloudinary.com/dkvliixzt/image/upload/v1707163072/d620b7ac-5dd7-4981-a32d-b5d673498260_raydjz.jpg'],
     ownerId: '2', createdAt: 1707157499599
   },
 
