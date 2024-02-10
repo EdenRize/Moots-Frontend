@@ -25,3 +25,10 @@ export interface SelectedPet {
   owner: User
   pet: Pet
 }
+
+export interface PetFilter {
+  txt?: string
+  type?: string
+  age?: number
+  race?: string
+}

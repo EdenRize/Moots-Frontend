@@ -19,13 +19,16 @@ import { computed, onMounted, ref, Ref } from "vue";
 import Card from "../components/common/Card.vue";
 import Dialog from "../components/common/Dialog.vue";
 import ItemSlot from "../components/common/slots/ItemSlot.vue";
-import { Pet, SelectedPet } from "../models/pet-models";
+import { Pet, SelectedPet, PetFilter } from "../models/pet-models";
 import { getAgeString, getLocalImgPath } from "../services/utils-service";
 import { petService } from "../services/pet.service";
 import { userService } from "../services/user.service";
+import { useRoute } from "vue-router";
 
 const selectedPet: Ref<SelectedPet | null> = ref(null)
 const isDialog: Ref<boolean> = ref(false)
+const route = useRoute()
+const filterBy: Ref<PetFilter> = ref(petService.getDefaultFilter())
 
 const placeholderImg = computed(() => {
   return getLocalImgPath('placeholders', 'pet-placeholder', 'png')
@@ -35,7 +38,9 @@ const pets: Ref<Pet[] | undefined> = ref()
 
 onMounted(async () => {
   try {
-    pets.value = await petService.query()
+    const { petType } = route.params
+    if (typeof petType === 'string') filterBy.value.type = petType
+    pets.value = await petService.query(filterBy.value)
   } catch (err: any) {
     console.log('err', err)
   }

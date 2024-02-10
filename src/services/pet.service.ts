@@ -1,5 +1,5 @@
 
-import { Pet, PetCredentials } from '../models/pet-models.js'
+import { Pet, PetCredentials, PetFilter } from '../models/pet-models.js'
 import { httpService } from './http.service.js'
 
 const BASE_URL = 'pet/'
@@ -51,7 +51,7 @@ async function save(pet: Pet | PetCredentials) {
     }
 }
 
-function getDefaultFilter() {
+function getDefaultFilter(): PetFilter {
     return { txt: '' }
 }
 
