@@ -1,11 +1,11 @@
 <template>
-  <section class="pet-index-page">
+  <section v-if="pets" class="pet-index-page">
     <Card v-for="pet in pets" :key="pet._id" @info-click="setSelectedPet(pet)" class="mb-6" :title="pet.name"
-      :sub-info="pet.age" :placeholder-img="placeholderImg" :imgs="pet.imgs" :createdAt="pet.createdAt" />
+      :sub-info="getAgeString(pet.age)" :placeholder-img="placeholderImg" :imgs="pet.imgs" :createdAt="pet.createdAt" />
 
-    <Dialog @close="isDialog = false" :is-open="isDialog">
+    <Dialog @close="closeDialog" :is-open="isDialog">
       <template v-slot:content>
-        <ItemSlot @close="isDialog = false" :sub-info="selectedPet?.pet.age"
+        <ItemSlot @close="closeDialog" :sub-info="getAgeString(selectedPet?.pet.age)"
           :title="`${selectedPet?.pet.name}${selectedPet?.pet.race ? ` - ${selectedPet?.pet.race}` : ''}`"
           :imgs="selectedPet?.pet.imgs" :description="selectedPet?.pet.description" :placeholder-img="placeholderImg"
           :owner="selectedPet?.owner" :is-loading="!selectedPet" :createdAt="selectedPet?.pet.createdAt" />
@@ -15,12 +15,14 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, ref, Ref } from "vue";
+import { computed, onMounted, ref, Ref } from "vue";
 import Card from "../components/common/Card.vue";
 import Dialog from "../components/common/Dialog.vue";
 import ItemSlot from "../components/common/slots/ItemSlot.vue";
 import { Pet, SelectedPet } from "../models/pet-models";
-import { getLocalImgPath } from "../services/utils-service";
+import { getAgeString, getLocalImgPath } from "../services/utils-service";
+import { petService } from "../services/pet.service";
+import { userService } from "../services/user.service";
 
 const selectedPet: Ref<SelectedPet | null> = ref(null)
 const isDialog: Ref<boolean> = ref(false)
@@ -29,51 +31,32 @@ const placeholderImg = computed(() => {
   return getLocalImgPath('placeholders', 'pet-placeholder', 'png')
 })
 
-const pets: Ref<Pet[]> = ref([
-  {
-    name: "טים", _id: "1", age: '4 חודשים', type: 'dog',
-    race: 'בריטי', description: 'חתול שמן מטומטם לא נחמד בככל עזבו אותו',
-    imgs: ['https://res.cloudinary.com/dkvliixzt/image/upload/v1707163072/d620b7ac-5dd7-4981-a32d-b5d673498260_raydjz.jpg'],
-    ownerId: '2', createdAt: 1707157682399
-  },
-  {
-    name: "טים", _id: "1", age: '4 חודשים', type: 'dog',
-    race: 'בריטי', description: 'חתול שמן מטומטם לא נחמד בככל עזבו אותו',
-    imgs: ['https://res.cloudinary.com/dkvliixzt/image/upload/v1707163072/d620b7ac-5dd7-4981-a32d-b5d673498260_raydjz.jpg'],
-    ownerId: '2', createdAt: 1706988151039
-  },
-  {
-    name: "טים", _id: "1", age: '4 חודשים', type: 'dog',
-    race: 'בריטי', description: 'חתול שמן מטומטם לא נחמד בככל עזבו אותו',
-    imgs: ['https://res.cloudinary.com/dkvliixzt/image/upload/v1707163072/d620b7ac-5dd7-4981-a32d-b5d673498260_raydjz.jpg'],
-    ownerId: '2', createdAt: 1707150247988
-  },
-  {
-    name: "טים", _id: "1", age: '4 חודשים', type: 'dog',
-    race: 'בריטי', description: 'חתול שמן מטומטם לא נחמד בככל עזבו אותו',
-    imgs: ['https://res.cloudinary.com/dkvliixzt/image/upload/v1707163072/d620b7ac-5dd7-4981-a32d-b5d673498260_raydjz.jpg'],
-    ownerId: '2', createdAt: 1707157499599
-  },
+const pets: Ref<Pet[] | undefined> = ref()
 
-]);
-
+onMounted(async () => {
+  try {
+    pets.value = await petService.query()
+  } catch (err: any) {
+    console.log('err', err)
+  }
+})
 
 const setSelectedPet = async (pet: Pet): Promise<void> => {
   try {
     isDialog.value = true
-    setTimeout(() => {
-      selectedPet.value = {
-        owner: {
-          _id: '2',
-          username: 'eden'
-        },
-        pet
-      }
-    }, 1000);
+    selectedPet.value = {
+      owner: await userService.getById(pet.ownerId),
+      pet
+    }
 
   } catch (err) {
 
   }
+}
+
+const closeDialog = () => {
+  isDialog.value = false
+  selectedPet.value = null
 }
 
 </script>

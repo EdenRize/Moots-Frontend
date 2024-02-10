@@ -6,7 +6,7 @@ export interface Pet {
   ownerId: string
   name: string
   type: string
-  age?: string
+  age?: number
   description?: string
   imgs?: string[]
   race?: string
@@ -15,7 +15,7 @@ export interface Pet {
 export interface PetCredentials {
   name: string
   type: string
-  age?: string
+  age?: number
   description?: string
   imgs?: string[]
   race?: string
