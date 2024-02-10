@@ -4,6 +4,15 @@
 
 @import "./fonts.scss";
 @import "./helpers.scss";
+
 body {
   font-family: Almoni;
+
+  &:has(.has-scroll) {
+    &:has(.dialog) {
+      overflow-y: scroll;
+      position: fixed;
+      inset: 0;
+    }
+  }
 }
