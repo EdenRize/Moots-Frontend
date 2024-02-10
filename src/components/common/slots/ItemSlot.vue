@@ -44,7 +44,7 @@ const itemClass = computed(() => {
 });
 
 const itemImgClass = computed(() => {
-    return "w-full h-96 object-cover rounded-t preview-img";
+    return "w-full h-96 object-cover sm:rounded-t preview-img";
 });
 
 const itemHeaderClass = computed(() => {
