@@ -11,7 +11,8 @@
             <p v-if="description" class="text-xl">{{ description }}</p>
             <div class="publish-info">
                 <p>פורסם על ידי
-                    <span v-if="owner"> {{ owner.username }}</span>
+                    <span class="username" v-if="owner" @click="router.push(`/user/${owner._id}`)"> {{ owner.username
+                    }}</span>
                     בתאריך
                     <span v-if="createdAt"> {{ timestampToFormattedDate(createdAt) }}</span>
                 </p>
@@ -30,7 +31,8 @@ import { getLocalIconPath } from '../../../services/utils-service';
 import { User } from '../../../models/user-models';
 import Spinner from '../Spinner.vue';
 import { timestampToFormattedDate } from '../../../services/utils-service';
-
+import { useRouter } from "vue-router";
+const router = useRouter();
 
 const itemImgSrc = computed(() => {
     return (
@@ -84,4 +86,13 @@ const emit = defineEmits<{
 
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.username {
+    text-decoration: underline;
+    cursor: pointer;
+
+    &:hover {
+        filter: brightness(80%);
+    }
+}
+</style>

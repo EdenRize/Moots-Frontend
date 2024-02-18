@@ -15,3 +15,13 @@
   inset: 0;
   background-color: rgba(41, 47, 76, 0.7);
 }
+
+.page {
+  width: 100%;
+  margin-inline-start: 143px;
+
+  .page-content {
+    margin-inline: auto;
+    width: 935px;
+  }
+}
