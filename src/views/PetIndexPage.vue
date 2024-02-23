@@ -24,6 +24,7 @@ import { getAgeString, getLocalImgPath } from "../services/utils-service";
 import { petService } from "../services/pet.service";
 import { userService } from "../services/user.service";
 import { useRoute } from "vue-router";
+import { store } from "../store/store";
 
 const selectedPet: Ref<SelectedPet | null> = ref(null)
 const isDialog: Ref<boolean> = ref(false)
@@ -33,6 +34,10 @@ const filterBy: Ref<PetFilter> = ref(petService.getDefaultFilter())
 const placeholderImg = computed(() => {
   return getLocalImgPath('placeholders', 'pet-placeholder', 'png')
 })
+
+
+
+
 
 const pets: Ref<Pet[] | undefined> = ref()
 

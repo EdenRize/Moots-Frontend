@@ -1,6 +1,6 @@
 <template>
   <section dir="rtl" :class="['app', isScroll && 'has-scroll']" id="app">
-    <AppHeader title="Moots" :logo="getLocalIconPath('moots', 'logo')" />
+    <AppHeader title="MOOTS" :logo="getLocalIconPath('moots', 'logo')" />
     <router-view class="sm:p-3 sm:py-9 mt-[65px] sm:mt-0"></router-view>
   </section>
 </template>
