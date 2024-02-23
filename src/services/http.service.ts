@@ -45,7 +45,6 @@ async function ajax(endpoint: string, method: string = 'GET', data: any = null) 
 
         if (Axios.isAxiosError(err) && err.response && err.response.status === 401) {
             sessionStorage.clear();
-            window.location.assign('/');
         }
 
         throw err;

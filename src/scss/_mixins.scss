@@ -1,0 +1,37 @@
+/* Breakpoint mixins */
+
+//640px +
+@mixin for-mobile-layout {
+    @media (min-width: $mobile-breakpoint) {
+        @content;
+    }
+}
+
+//768px +
+@mixin for-narrow-layout {
+    @media (min-width: $narrow-breakpoint) {
+        @content;
+    }
+}
+
+//1024px +
+@mixin for-tablet-layout {
+    @media (min-width: $tablet-breakpoint) {
+        @content;
+    }
+}
+
+
+//1280px +
+@mixin for-desktop-layout {
+    @media (min-width: $desktop-breakpoint) {
+        @content;
+    }
+}
+
+//1536px +
+@mixin for-large-layout {
+    @media (min-width: $large-breakpoint) {
+        @content;
+    }
+}

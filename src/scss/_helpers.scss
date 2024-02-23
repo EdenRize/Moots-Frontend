@@ -16,12 +16,25 @@
   background-color: rgba(41, 47, 76, 0.7);
 }
 
+.app {
+  display: grid;
+  grid-template-areas:
+    "header page";
+  grid-template-columns: 153px 1fr;
+}
+
+.app-header {
+  grid-area: header;
+}
+
 .page {
+  grid-area: page;
   width: 100%;
-  margin-inline-start: 143px;
+  min-height: 100dvh;
 
   .page-content {
     margin-inline: auto;
     width: 935px;
+    height: 100%;
   }
 }

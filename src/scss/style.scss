@@ -2,8 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "./fonts.scss";
-@import "./helpers.scss";
+@import "./variables";
+@import "./mixins";
+@import "./fonts";
+@import "./helpers";
 
 body {
   font-family: Almoni;
@@ -15,4 +17,8 @@ body {
       inset: 0;
     }
   }
+}
+
+input {
+  outline: unset;
 }

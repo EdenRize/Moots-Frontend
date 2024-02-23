@@ -1,5 +1,5 @@
 <template>
-  <section v-if="pets" class="pet-index-page">
+  <section v-if="pets" class="page pet-index-page">
     <Card v-for="pet in pets" :key="pet._id" @info-click="setSelectedPet(pet)" class="mb-6" :title="pet.name"
       :sub-info="getAgeString(pet.age)" :placeholder-img="placeholderImg" :imgs="pet.imgs" :createdAt="pet.createdAt" />
 
@@ -24,7 +24,6 @@ import { getAgeString, getLocalImgPath } from "../services/utils-service";
 import { petService } from "../services/pet.service";
 import { userService } from "../services/user.service";
 import { useRoute } from "vue-router";
-import { store } from "../store/store";
 
 const selectedPet: Ref<SelectedPet | null> = ref(null)
 const isDialog: Ref<boolean> = ref(false)
@@ -35,11 +34,7 @@ const placeholderImg = computed(() => {
   return getLocalImgPath('placeholders', 'pet-placeholder', 'png')
 })
 
-
-
-
-
-const pets: Ref<Pet[] | undefined> = ref()
+const pets = ref<Pet[] | undefined>()
 
 onMounted(async () => {
   try {

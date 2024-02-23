@@ -100,7 +100,7 @@ async function logout() {
     }
 }
 
-function getEmptyUser() {
+function getEmptyUser(): UserCredentials {
     return {
         username: '',
         password: ''

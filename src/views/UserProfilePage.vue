@@ -80,6 +80,7 @@ const closeDialog = () => {
 
 <style lang="scss" scoped>
 .user-profile-page {
+
     .page-content {
 
         .user-details {
