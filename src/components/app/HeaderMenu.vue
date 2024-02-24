@@ -33,7 +33,7 @@ const props = defineProps<HeaderMenuProps>()
         transition: .2s;
 
         img {
-            width: 30px;
+            width: 23px;
             margin-inline-end: 10px;
             transition: .2s;
         }
@@ -42,7 +42,7 @@ const props = defineProps<HeaderMenuProps>()
             background-color: #f6f1ee;
 
             img {
-                scale: 1.02;
+                scale: 1.03;
             }
         }
     }

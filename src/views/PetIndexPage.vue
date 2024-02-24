@@ -38,8 +38,8 @@ const pets = ref<Pet[] | undefined>()
 
 onMounted(async () => {
   try {
-    const { petType } = route.params
-    if (typeof petType === 'string') filterBy.value.type = petType
+    const { type } = route.query
+    if (typeof type === 'string') filterBy.value.type = type
     pets.value = await petService.query(filterBy.value)
   } catch (err: any) {
     console.log('err', err)

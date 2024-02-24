@@ -30,9 +30,19 @@ const appHeaderClass = computed(() => {
   return "fixed top-0 w-full sm:w-auto sm:h-full app-header px-3 lg:px-4 py-3 bg-white border-b border-midLight sm:border-b-0 sm:border-s sm:w-[250px]";
 });
 
+
+
+onMounted(() => {
+  updateMenuOptions();
+});
+
+watch(() => store.getters.loggedInUser, () => {
+  updateMenuOptions();
+});
+
 const updateMenuOptions = () => {
   const loggedInUser = store.getters.loggedInUser;
-  menuOptions.value = [];
+  resetMenuOptions()
 
   if (loggedInUser) {
     menuOptions.value.push({
@@ -49,14 +59,10 @@ const updateMenuOptions = () => {
   }
 };
 
-onMounted(() => {
-  updateMenuOptions();
-});
+const resetMenuOptions = () => {
+  menuOptions.value = [];
 
-// Watch for changes in loggedInUser and update menuOptions accordingly
-watch(() => store.getters.loggedInUser, () => {
-  updateMenuOptions();
-});
+}
 
 </script>
 

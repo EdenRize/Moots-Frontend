@@ -1,5 +1,6 @@
 <template>
-    <Spinner v-if="isLoading" :src="spinnerSrc" />
+    <Lottie v-if="isLoading" :animation-data="animationData" />
+    <!-- <Spinner v-if="isLoading" :src="spinnerSrc" /> -->
     <section v-else :class="itemClass">
         <img v-if="itemImgSrc" :class="itemImgClass" :src="itemImgSrc" />
         <div :class="itemHeaderClass">
@@ -29,9 +30,10 @@ import { computed } from 'vue';
 import RoundBtn from '../RoundBtn.vue';
 import { getLocalIconPath } from '../../../services/utils-service';
 import { User } from '../../../models/user-models';
-import Spinner from '../Spinner.vue';
 import { timestampToFormattedDate } from '../../../services/utils-service';
 import { useRouter } from "vue-router";
+import Lottie from '../Lottie.vue';
+import animationData from '../../../assets/imgs/loaders/cat-loader.json';
 const router = useRouter();
 
 const itemImgSrc = computed(() => {
@@ -87,6 +89,14 @@ const emit = defineEmits<{
 </script>
 
 <style lang="scss" scoped>
+.lottie {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 250px;
+}
+
 .username {
     text-decoration: underline;
     cursor: pointer;
