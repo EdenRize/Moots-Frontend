@@ -20,7 +20,7 @@ const store = useStore()
 const authType = ref<string | null>(null)
 const user = ref<UserCredentials>(userService.getEmptyUser())
 
-const inputs = [{ placeholder: 'שם משתמש', type: 'text', required: true, name: 'userName' }, { placeholder: 'סיסמה', type: 'password', required: true, name: 'password' }]
+const inputs = [{ placeholder: 'שם משתמש', type: 'text', required: true, name: 'username' }, { placeholder: 'סיסמה', type: 'password', required: true, name: 'password' }]
 
 onMounted(async () => {
     try {
@@ -36,8 +36,13 @@ watch(() => route.params.authTitle, (newValue) => {
     updateAuthType(newValue)
 })
 
-const submit = (form: any) => {
-    console.log(form);
+const submit = async (form: any) => {
+    try {
+        await store.dispatch('login', form)
+        router.push('/')
+    } catch (err) {
+        console.log('err', err)
+    }
 
 }
 
@@ -57,7 +62,6 @@ const onSubmit = async (ev: Event) => {
         } else {
             await store.dispatch('signup', user.value)
         }
-        router.push('/')
     } catch (err) {
         console.log('err', err)
     }

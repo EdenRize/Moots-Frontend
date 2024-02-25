@@ -9,7 +9,7 @@
 import Form, { FormModel } from '../components/common/form/Form.vue';
 import Input from '../components/common/input/Input.vue';
 
-const inputs = [{ placeholder: 'שם משתמש', type: 'text', required: true, name: 'userName' }, { placeholder: 'סיסמה', type: 'password', required: true, name: 'password' }]
+const inputs = [{ placeholder: 'שם משתמש', type: 'text', required: true, name: 'username' }, { placeholder: 'סיסמה', type: 'password', required: true, name: 'password' }]
 
 const onSubmit = (form: FormModel) => {
     console.log(form);
